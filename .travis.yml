@@ -13,3 +13,10 @@ sciprt:
     -docker build -t isaac/multi-nginx ./nginx
     -docker build -t isaac/multi-server ./server
     -docker build -t isaac/multi-worker ./worker
+
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+    - docker push isaac/multi-client
+    - docker push isaac/multi-nginx
+    - docker push isaac/multi-server
+    - docker push isaac/multi-worker
