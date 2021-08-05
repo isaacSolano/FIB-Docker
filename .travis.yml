@@ -1,3 +1,4 @@
+language: generic
 sudo: required
 services:
   - docker
@@ -6,7 +7,7 @@ before_install:
   - docker build -t isaac/react_test -f ./ client/Dockerfile.dev ./client
 
 sciprt:
-  - docker run isaac/react_test npm test -- --coverage
+  - docker run -e CI=true USERNAME/react-test npm test
 
   after_success:
     -docker build -t isaac/multi-client ./client
